@@ -8,7 +8,7 @@ def AND(x1,x2):
     b = -0.7  # bias
     tmp = np.sum(w*x)+b  # wx+b
     print('AND weighted sum :', tmp)
-    if tmp <= 0:  # activation function 역할
+    if tmp <= 0:  # classification 역할
         return 0
     else:
         return 1
