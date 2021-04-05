@@ -2,14 +2,12 @@
 # 모두의 딥러닝 책 내용도 유사
 import numpy as np
 
-# AND, NAND, OR -> XOR 과정 확인
-# 퍼셉트론 연산 과정 계산?
-
 def AND(x1,x2):
     x = np.array([x1,x2])
     w = np.array([0.5,0.5])  # weight
     b = -0.7  # bias
     tmp = np.sum(w*x)+b  # wx+b
+    print('AND weighted sum :', tmp)
     if tmp <= 0:  # activation function 역할
         return 0
     else:
@@ -20,6 +18,7 @@ def NAND(x1,x2):
     w = np.array([-0.5,-0.5])
     b = 0.7
     tmp = np.sum(w*x)+b
+    print('NAND weighted sum :',tmp)
     if tmp <= 0:
         return 0
     else:
@@ -30,6 +29,7 @@ def OR(x1,x2):
     w = np.array([0.5, 0.5])
     b = -0.2
     tmp = np.sum(w*x)+b
+    print('OR weighted sum :', tmp)
     if tmp <= 0:
         return 0
     else:
