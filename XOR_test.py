@@ -1,5 +1,5 @@
 # 출처 : https://leedakyeong.tistory.com/entry/%EB%B0%91%EB%B0%94%EB%8B%A5%EB%B6%80%ED%84%B0-%EC%8B%9C%EC%9E%91%ED%95%98%EB%8A%94-%EB%94%A5%EB%9F%AC%EB%8B%9D-%ED%8D%BC%EC%85%89%ED%8A%B8%EB%A1%A0%EC%9C%BC%EB%A1%9C-XOR-%EA%B2%8C%EC%9D%B4%ED%8A%B8-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-in-python-%ED%8C%8C%EC%9D%B4%EC%8D%AC
-# 모두의 딥러닝 책 내용도 유사
+# 논리 게이트 내용 참고 블로그 : http://www.terms.co.kr/logicgate.htm
 import numpy as np
 
 def AND(x1,x2):
