@@ -8,7 +8,6 @@ from intent_classification import IntentModule
 p = Preprocess(word2index_dic='../train_tools/dict/chatbot_dict.bin',
                userdic='../utils/user_dic.tsv')
 
-#intent = IntentModule.IntentModel(model_name='../models/intent_classification/intent_classification_best_model.h5', pre_process=p)
 intent = IntentModule.IntentModel(model_name='../models/intent_classification/textbook_intent_model.h5', pre_process=p)
 
 query = "5시반에 퇴근입니다"

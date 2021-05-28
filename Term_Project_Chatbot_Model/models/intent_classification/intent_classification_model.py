@@ -1,3 +1,5 @@
+# 주피터 수정 코드 참조
+
 import pandas as pd
 import tensorflow as tf
 from tensorflow.keras import preprocessing
