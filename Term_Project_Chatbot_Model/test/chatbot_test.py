@@ -17,21 +17,38 @@ p = Preprocess(word2index_dic='../train_tools/dict/chatbot_dict.bin',
 db = ChatbotDB(host=DB_HOST, user=DB_USER, password=DB_PASSWORD, db_name=DB_NAME, charset='UTF8')
 db.connect()
 
-# 발화문 ~ 다시 테스트
-# query = "오전에 자장면 10개 주문합니다"
-# 의도 파악:  기타
-# 개체명 인식:  [('오전', 'B_DT'), ('자장면', 'B_FOOD'), ('10', 'O'), ('개', 'O'), ('주문', 'O')]
-# 답변 검색에 필요한 NER tag:  ['B_DT']
+# 발화문
+query = "오전에 자장면 10개 주문합니다"
+'''
+의도 파악:  기타
+개체명 인식:  [('오전', 'B_DT'), ('자장면', 'B_FOOD'), ('10', 'O'), ('개', 'O'), ('주문', 'O')]
+답변 검색에 필요한 NER tag:  ['B_DT']
+----------------------------------------
+'NoneType' object is not subscriptable
+답변:  무슨 말인지 몰라요
+'''
 
-# query = "짜장면 5개요"
-# 의도 파악:  주문
-# 개체명 인식:  [('짜장면', 'O'), ('5', 'O'), ('개요', 'O')]
-# 답변 검색에 필요한 NER tag:  None
+query = "짜장면 5개요"
+'''
+의도 파악:  주문
+개체명 인식:  [('짜장면', 'O'), ('5', 'O'), ('개요', 'O')]
+답변 검색에 필요한 NER tag:  None
+----------------------------------------
+답변:  B_FOOD 주문 처리 감사!! / 답변:  B_FOOD 주문 처리 완료되었습니다. 주문해주셔서 감사합니다.
+'''
 
-query = "내일 오후 17시 50분에 자장면을 주문하고 싶어요"
-# 의도 파악:  예약
-# 개체명 인식:  [('내일', 'B_DT'), ('오후', 'B_DT'), ('17시', 'B_DT'), ('50분', 'B_DT'), ('자장면', 'B_FOOD'), ('주문', 'O'), ('싶', 'O')]
-# 답변 검색에 필요한 NER tag:  ['B_DT']
+# query = "내일 오후 17시 50분에 자장면을 주문하고 싶어요"
+'''
+----------------------------------------
+의도 파악:  예약
+개체명 인식:  [('내일', 'B_DT'), ('오후', 'B_DT'), ('17시', 'B_DT'), ('50분', 'B_DT'), ('자장면', 'B_FOOD'), ('주문', 'O'), ('싶', 'O')]
+답변 검색에 필요한 NER tag:  ['B_DT']
+----------------------------------------
+답변:  B_DT에 예약 접수 되었습니다.
+'''
+
+
+
 
 # 의도 파악
 intent = IntentModule.IntentModel(model_name='../models/intent_classification/textbook_intent_model.h5', pre_process=p)
