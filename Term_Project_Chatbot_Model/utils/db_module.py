@@ -2,7 +2,7 @@ import pymssql
 import logging
 
 class ChatbotDB:
-    def __init__(self, host, user, password, db_name, charset='utf-8'):
+    def __init__(self, host, user, password, db_name, charset='utf8'):
         self.host = host
         self.user = user
         self.password = password
@@ -18,7 +18,7 @@ class ChatbotDB:
             host = self.host,
             user = self.user,
             password = self.password,
-            db = self.db_name,
+            database = self.db_name,
             charset = self.charset
         )
 
@@ -26,8 +26,9 @@ class ChatbotDB:
         if self.conn is None:
             return
 
-        if not self.conn.open:
-            self.conn= None
+        if not self.conn:
+        #if not self.conn.open:
+            self.conn = None
             return
         self.conn.close()
         self.conn = None
@@ -47,18 +48,22 @@ class ChatbotDB:
     def select_one(self, sql):
         result = None
         try:
-            with self.conn.cursor(pymssql.cursors.DictCursor) as cursor:
+            with self.conn.cursor(as_dict=True) as cursor:
+            #with self.conn.cursor(pymssql.cursors.DictCursor) as cursor:
                 cursor.execute(sql)
                 result = cursor.fetchone()
+                #print("db_module result: ", result)
         except Exception as ex:
             logging.error(ex)
+            #print("db_module exception: ", ex)
         finally:
             return result
 
     def select_all(self, sql):
         result = None
         try:
-            with self.conn.cursor(pymssql.cursors.DictCursor) as cursor:
+            with self.conn.cursor(as_dict=True) as cursor:
+            #with self.conn.cursor(pymssql.cursors.DictCursor) as cursor:
                 cursor.execute(sql)
                 result = cursor.fetchall()
         except Exception as ex:

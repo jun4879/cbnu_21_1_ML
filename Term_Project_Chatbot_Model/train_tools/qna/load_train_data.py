@@ -38,6 +38,7 @@ try :
         print(row)
         insert_data(db, row)
     wb.close()
+
 except Exception as e:
     print(e)
 
