@@ -37,9 +37,15 @@ class FindAnswer:
         return answer['answer']  # answer['answer_image']
 
     def tag_to_word(self, ner_predicts, answer):
+        food_word = ''
+        dt_word = ''
         for word, tag in ner_predicts:
             if tag == 'B_FOOD':
-                answer = answer.replace(tag, word)
+                food_word += word + ' '
+            if tag == 'B_DT':
+                dt_word += word + ' '
+        answer = answer.replace('B_FOOD', food_word)
+        answer = answer.replace('B_DT', dt_word)
         answer = answer.replace('{', '')
         answer = answer.replace('}', '')
         return answer
