@@ -18,7 +18,8 @@ db = ChatbotDB(host=DB_HOST, user=DB_USER, password=DB_PASSWORD, db_name=DB_NAME
 db.connect()
 
 # 발화문
-query = "오전에 자장면 10개 주문합니다"
+# query = "오전에 자장면 10개 주문합니다"
+
 '''
 의도 파악:  기타
 개체명 인식:  [('오전', 'B_DT'), ('자장면', 'B_FOOD'), ('10', 'O'), ('개', 'O'), ('주문', 'O')]
@@ -59,6 +60,8 @@ query = "오전에 자장면 10개 주문합니다"
 ----------------------------------------
 답변:  B_DT에 예약 접수 되었습니다.
 '''
+
+query = input("질문 내용 : ")
 
 # 의도 파악
 intent = IntentModule.IntentModel(model_name='../models/intent_classification/textbook_intent_model.h5', pre_process=p)
