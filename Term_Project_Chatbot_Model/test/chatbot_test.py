@@ -1,13 +1,11 @@
 import sys
-sys.path.append('../utils')
-sys.path.append('../models')
-sys.path.append('../config')
-from DBConfig import *
-from db_module import ChatbotDB
-from preprocess import Preprocess
-from intent_classification import IntentModule
-from ner import NERModule
-from FindAnswer import FindAnswer
+sys.path.append('..')
+from config.DBConfig import *
+from utils.db_module import ChatbotDB
+from utils.preprocess import Preprocess
+from models.intent_classification import IntentModule
+from models.ner import NERModule
+from utils.FindAnswer import FindAnswer
 
 # 전처리 객체 생성
 p = Preprocess(word2index_dic='../train_tools/dict/chatbot_dict.bin',

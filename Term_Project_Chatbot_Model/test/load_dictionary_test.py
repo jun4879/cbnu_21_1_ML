@@ -1,8 +1,8 @@
 import sys
-sys.path.append('../utils')
+sys.path.append('..')
 
 import pickle
-from preprocess import Preprocess
+from utils.preprocess import Preprocess
 
 f = open('../train_tools/dict/chatbot_dict.bin', 'rb')
 word_index = pickle.load(f)

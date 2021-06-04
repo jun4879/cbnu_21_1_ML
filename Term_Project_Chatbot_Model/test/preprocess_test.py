@@ -1,6 +1,6 @@
 import sys
-sys.path.append('../utils')
-from preprocess import Preprocess
+sys.path.append('..')
+from utils.preprocess import Preprocess
 
 sentence = "내일 저녁 8시에 닭튀김을 주문하고 싶어"
 

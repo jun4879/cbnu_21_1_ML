@@ -1,9 +1,7 @@
 import sys
-sys.path.append('../utils')
-sys.path.append('../models')
-sys.path.append('../config')
-from preprocess import Preprocess
-from intent_classification import IntentModule
+sys.path.append('..')
+from utils.preprocess import Preprocess
+from models.intent_classification import IntentModule
 
 p = Preprocess(word2index_dic='../train_tools/dict/chatbot_dict.bin',
                userdic='../utils/user_dic.tsv')

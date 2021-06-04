@@ -6,11 +6,9 @@ from tensorflow.keras import preprocessing
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, Embedding, Dense, Dropout, Conv1D, GlobalMaxPool1D, concatenate
 import sys
-sys.path.append('../../utils')
-from preprocess import Preprocess
-sys.path.append('../../config')
-from GlobalParams import MAX_SEQ_LEN
-from sklearn.model_selection import train_test_split
+sys.path.append('../..')
+from utils.preprocess import Preprocess
+from config.GlobalParams import MAX_SEQ_LEN
 
 train_file = "total_train_data.csv"
 data = pd.read_csv(train_file, delimiter=',')
