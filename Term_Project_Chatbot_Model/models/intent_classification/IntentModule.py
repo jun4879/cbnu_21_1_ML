@@ -3,8 +3,8 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras import preprocessing
 import sys
 sys.path.append('../../utils')
-sys.path.append('../../config')
-from GlobalParams import MAX_SEQ_LEN
+sys.path.append('../..')
+from config.GlobalParams import MAX_SEQ_LEN
 
 class IntentModel:
     def __init__(self, model_name, pre_process):
