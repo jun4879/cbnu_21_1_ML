@@ -1,7 +1,7 @@
 import pymssql
 import sys
-sys.path.append('../../config')
-from DBConfig import *
+sys.path.append('../..')
+from config.DBConfig import *
 
 db = None
 try :

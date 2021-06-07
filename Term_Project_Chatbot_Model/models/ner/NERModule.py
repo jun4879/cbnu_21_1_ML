@@ -2,9 +2,7 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras import preprocessing
 import numpy as np
-import sys
-sys.path.append('../../utils')
-sys.path.append('../../config')
+
 
 # 개체명 인식 모듈
 class NerModel:

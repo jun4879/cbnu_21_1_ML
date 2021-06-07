@@ -2,8 +2,8 @@ import pymssql
 import openpyxl
 #import pyodbc
 import sys
-sys.path.append('../../config')
-from DBConfig import *
+sys.path.append('../..')
+from config.DBConfig import *
 
 def all_clear_train_data(db):
     sql = '''
@@ -24,6 +24,7 @@ def insert_data(db, xls_row):
         cursor.execute(sql)
         print('{} 저장'.format(query.value))
         db.commit()
+
 
 train_file = './train_data.xlsx'
 db = None
