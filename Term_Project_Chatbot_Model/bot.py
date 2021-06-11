@@ -19,6 +19,7 @@ intent = IntentModel(model_name='models/intent_classification/textbook_intent_mo
 # 개체명 인식 모델
 ner = NerModel(model_name='models/ner/ner_best_model.h5', pre_process=p)
 
+
 def to_client(conn, addr, params):
     db = params['db']
     try:
@@ -59,31 +60,31 @@ def to_client(conn, addr, params):
                               "Answer": answer,
                               "Intent": intent_name,
                               "NER": str(ner_predicts)}
-        message = json.dumps(send_json_data_str) # json 객체를 전송 가능한 문자열로 변환
+        message = json.dumps(send_json_data_str)  # json 객체를 전송 가능한 문자열로 변환
         conn.send(message.encode())
 
     except Exception as ex:
-        print(ex)
+        print('에러: ', ex)
 
     finally:
         if db is not None: # db 연결 끊기
             db.close()
         conn.close()
 
-if __name__ == 'main':
-    # db 연결 객체 생성
-    db = ChatbotDB(host=DB_HOST, user=DB_USER, password=DB_PASSWORD, db_name=DB_NAME)
-    print("DB Connected")
+#if __name__ == 'main':
+# db 연결 객체 생성
+db = ChatbotDB(host=DB_HOST, user=DB_USER, password=DB_PASSWORD, db_name=DB_NAME)
+print("DB Connected")
 
-    # 봇 서버 동작
-    port = 5050
-    listen = 100
-    bot = BotServer(port, listen)
-    bot.create_sock()
-    print("bot start")
+# 봇 서버 동작
+port = 5050
+listen = 100
+bot = BotServer(port, listen)
+bot.create_sock()
+print("bot start")
 
-    while True:
-        conn, addr = bot.ready_for_client()
-        params = {"db": db}
-        client = threading.Thread(target=to_client, args=(conn, addr, params))
-        client.start()
+while True:
+    conn, addr = bot.ready_for_client()
+    params = {"db": db}
+    client = threading.Thread(target=to_client, args=(conn, addr, params))
+    client.start()

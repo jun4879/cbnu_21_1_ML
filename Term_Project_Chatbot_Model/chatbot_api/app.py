@@ -16,6 +16,7 @@ def get_answer_from_engine(bottype, query):
     # 챗봇 엔진 질의 요청
     json_data = {'Query': query, 'BotType': bottype}
     message = json.dumps(json_data)
+    print("message: ", message)
     mySocket.send(message.encode())
 
     # 챗봇 엔진 답변 출력
@@ -27,24 +28,25 @@ def get_answer_from_engine(bottype, query):
 
     return ret_data
 
+
 # 챗봇 엔진 query 전송 api
-@app.route('/query/<bot_type>', method=['POST'])
+@app.route('/query/<bot_type>', methods=["POST"])
 def query(bot_type):
     body = request.get_json()
 
     try:
-        if bot_type == 'TEST':
+        if bot_type == "test":
             # 챗봇 api test
-            ret = get_answer_from_engine(bottype=bot_type, query=body['query'])
+            ret = get_answer_from_engine(bottype=bot_type, query=body["query"])
             return jsonify(ret)
 
-        elif bot_type == 'KAKAO':
+        elif bot_type == "kakao":
             pass
 
-        elif bot_type == 'NAVER':
+        elif bot_type == "naver":
             pass
 
-        else :
+        else:
             abort(404)
 
     except Exception as ex:
@@ -52,5 +54,4 @@ def query(bot_type):
         abort(500)  # 오류 발생 시 500 오류
 
 
-if __name__ == '__main__':
-    app.run()
+app.run()
