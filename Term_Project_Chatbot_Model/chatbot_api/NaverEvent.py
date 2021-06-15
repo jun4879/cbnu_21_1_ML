@@ -25,7 +25,7 @@ class NaverEvent:
 
         message = json.dumps(data)
         return requests.post(
-            'http://gw.talk.naver.com/chatbot/v1/event', # INVOKE URL 넣으면 되나?
+            'https://clovachatbot.ncloud.com/api/chatbot/messenger/v1',  # INVOKE URL 넣으면 되나?
             headers=headers,
             data=message)
 

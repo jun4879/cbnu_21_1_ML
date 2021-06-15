@@ -6,16 +6,16 @@ headers = {
     'Authorization': authorization_key
 }
 
-user_key = 'jt1526'
+user_key = 'https://talk.naver.com/ct/w4pv28'
 data = {
     "event": "send",
     "user": user_key,
-    "textContent": {"text": "hello talktalk test chatbot"},
+    "textContent": {"text": "안녕"},
 }
 
 message = json.dumps(data)
 response = requests.post(
-    'https://talk.naver.com/W4PV28',
+    'https://clovachatbot.ncloud.com/api/chatbot/messenger/v1/query/naver',
     headers=headers,
     data=message
 )
