@@ -11,7 +11,7 @@ class NerModel:
         self.index_to_ner = {1:'O', 2:'B_DT', 3:'B_FOOD', 4:'I',5:'B_OG',6:'B_PS',
                              7:'B_LC', 8:'NNP', 9:'B_TI', 0:'PAD'}
         # 의도 분류 모델 불러오기
-        self.model = load_model(model_name)
+        self.model = load_model(model_name, compile=False)
         # 챗봇 전처리 객체
         self.p = pre_process
 

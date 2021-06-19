@@ -1,5 +1,4 @@
-DB_HOST = 'DESKTOP-23M1HE5\MSSQLSERVER17'
-#DB_HOST = '(local)'
+DB_HOST = 'localhost'
 DB_USER = 'chatbot_test'
 DB_PASSWORD = 'test'
 DB_NAME = 'chatbot_test'

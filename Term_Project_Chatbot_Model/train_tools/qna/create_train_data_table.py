@@ -1,14 +1,16 @@
-import pymssql
+#import pymssql
+import pymysql
 import sys
 sys.path.append('../..')
 from config.DBConfig import *
 
 db = None
 try :
-    db = pymssql.connect(server=DB_HOST, user=DB_USER, password=DB_PASSWORD, database=DB_NAME, charset='utf8')
+    db = pymysql.connect(host=DB_HOST, user=DB_USER, password=DB_PASSWORD, database=DB_NAME, charset='utf8')
+        #pymssql.connect(server=DB_HOST, user=DB_USER, password=DB_PASSWORD, database=DB_NAME, charset='utf8')
     sql = '''
-        CREATE TABLE IF NOT EXISTS 'chatbot_train_data'(
-        'id' INT UNSIGNED NOT NULL AND_INCREMENT,
+        CREATE TABLE IF NOT EXISTS 'chatbot_train_data' (
+        'id' INT NULL,
         'intent' VARCHAR(45) NULL,
         'ner' VARCHAR(1024) NULL,
         'query' TEXT NULL,
@@ -18,7 +20,7 @@ try :
         )
         '''
     with db.cursor() as cursor:
-        cusor.execute(sql)
+        cursor.execute(sql)
 
 except Exception as e:
     print(e)

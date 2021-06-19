@@ -1,4 +1,5 @@
-import pymssql
+#import pymssql
+import pymysql
 import logging
 
 class ChatbotDB:
@@ -14,7 +15,7 @@ class ChatbotDB:
         if self.conn != None:
             return
 
-        self.conn = pymssql.connect(
+        self.conn = pymysql.connect( #pymssql.connect(
             host = self.host,
             user = self.user,
             password = self.password,
@@ -48,17 +49,18 @@ class ChatbotDB:
     def select_one(self, sql):
         result = None
         try:
-            with self.conn.cursor(as_dict=True) as cursor:
-            #with self.conn.cursor(pymssql.cursors.DictCursor) as cursor:
+            #with self.conn.cursor(as_dict=True) as cursor:  # pymssql 코드
+            with self.conn.cursor(pymysql.cursors.DictCursor) as cursor: # pymysql 코드
                 cursor.execute(sql)
                 result = cursor.fetchone()
-                #print("db_module result: ", result)
+                print("db_module result: ", result)
         except Exception as ex:
             logging.error(ex)
-            #print("db_module exception: ", ex)
+            print("db_module exception: ", ex)
         finally:
             return result
 
+    '''
     def select_all(self, sql):
         result = None
         try:
@@ -70,5 +72,5 @@ class ChatbotDB:
             logging.error(ex)
         finally:
             return result
-
+    '''
 

@@ -1,8 +1,11 @@
-import pymssql
+#import pymssql
+import pymysql
 import openpyxl
 #import pyodbc
 import sys
-sys.path.append('../..')
+import os
+#sys.path.append('../..')
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from config.DBConfig import *
 
 def all_clear_train_data(db):
@@ -26,11 +29,12 @@ def insert_data(db, xls_row):
         db.commit()
 
 
-train_file = './train_data.xlsx'
+train_file = 'train_data.xlsx'
 db = None
 try :
     #db = pyodbc.connect(server=DB_HOST, user=DB_USER, password=DB_PASSWORD, database=DB_NAME, charset='utf8')
-    db = pymssql.connect(server=DB_HOST, user=DB_USER, password=DB_PASSWORD, database=DB_NAME, charset='utf8')
+    #db = pymssql.connect(server=DB_HOST, user=DB_USER, password=DB_PASSWORD, database=DB_NAME, charset='utf8')
+    db = pymysql.connect(host=DB_HOST, user=DB_USER, password=DB_PASSWORD, database=DB_NAME, charset='utf8')
     all_clear_train_data(db)
 
     wb = openpyxl.load_workbook(train_file)
